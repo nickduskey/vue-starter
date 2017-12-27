@@ -2,9 +2,10 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    parser: 'babel-eslint',
+    ecmaVersion: 2017
   },
   env: {
     browser: true,
@@ -13,9 +14,14 @@ module.exports = {
   plugins: [
     'html'
   ],
+  extends: [
+    'airbnb-base',
+    'plugin:vue/recommended'
+  ],
   // add your custom rules here
   rules: {
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-unresolved': [2, { ignore: ['\.vue$'] }]
   }
 }
